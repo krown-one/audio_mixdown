@@ -73,7 +73,7 @@ class _MixDemoPageState extends State<MixDemoPage> {
 
       final out = p.join(outDir.path, 'final_${DateTime.now().millisecondsSinceEpoch}.m4a');
 
-      final result = await AudioMixdown.mix(voicePath: _voicePath!, bgPath: _bgPath!, outPath: out, voiceGain: 1.0, bgGain: 0.35, delayMs: 400, fadeInMs: 600, fadeOutMs: 600);
+      final result = await AudioMixdown.mix(voicePath: _voicePath!, bgPath: _bgPath!, outPath: out, voiceGain: 1.0, bgGain: 0.35, delayMs: 3000, fadeInMs: 600, fadeOutMs: 600);
 
       setState(() => _outPath = result);
     } catch (e) {
