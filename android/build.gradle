@@ -47,7 +47,15 @@ android {
         minSdk = 24
     }
 
+    def media3_version = "1.8.0"
+
     dependencies {
+        // Media3 para edición/export AAC/M4A
+        implementation "androidx.media3:media3-transformer:$media3_version"
+        implementation "androidx.media3:media3-effect:$media3_version"
+        implementation "androidx.media3:media3-extractor:$media3_version"
+        implementation "androidx.media3:media3-common:$media3_version"
+
         testImplementation("org.jetbrains.kotlin:kotlin-test")
         testImplementation("org.mockito:mockito-core:5.0.0")
     }

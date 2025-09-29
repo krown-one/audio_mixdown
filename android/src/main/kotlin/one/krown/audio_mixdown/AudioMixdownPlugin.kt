@@ -1,38 +1,21 @@
 package one.krown.audio_mixdown
 
+import androidx.annotation.NonNull
 import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 
-/** AudioMixdownPlugin */
-class AudioMixdownPlugin :
-    FlutterPlugin,
-    MethodCallHandler {
-    // The MethodChannel that will the communication between Flutter and native Android
-    //
-    // This local reference serves to register the plugin with the Flutter Engine and unregister it
-    // when the Flutter Engine is detached from the Activity
-    private lateinit var channel: MethodChannel
+/** AudioMixdownPlugin: registra la API generada por Pigeon */
+class AudioMixdownPlugin : FlutterPlugin {
 
-    override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "audio_mixdown")
-        channel.setMethodCallHandler(this)
-    }
+  override fun onAttachedToEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    // IMPLEMENTACIÓN nativa de la HostApi
+    val apiImpl = AudioMixdownHostApiImpl(binding.applicationContext)
 
-    override fun onMethodCall(
-        call: MethodCall,
-        result: Result
-    ) {
-        if (call.method == "getPlatformVersion") {
-            result.success("Android ${android.os.Build.VERSION.RELEASE}")
-        } else {
-            result.notImplemented()
-        }
-    }
+    // Clase generada por Pigeon (Pigeon.kt) que hace el wiring binario
+    AudioMixdownHostApi.setUp(binding.binaryMessenger, apiImpl)
+  }
 
-    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-        channel.setMethodCallHandler(null)
-    }
+  override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    // Desregistra la API si tu versión de Pigeon lo soporta
+    AudioMixdownHostApi.setUp(binding.binaryMessenger, null)
+  }
 }
