@@ -40,7 +40,7 @@ dependencies:
   audio_mixdown:
     git:
       url: https://github.com/tu-org/audio_mixdown.git
-      ref: v0.1.0
+      ref: v0.1.1
 ```
 
 > O localmente, si estás desarrollando el plugin: `path: ../audio_mixdown`.
