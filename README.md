@@ -8,7 +8,8 @@
 * **Repo:** `krown-one/audio_mixdown`
 
 > **Estado:** iOS ✅ (gains + delay + fades). Android v1 ✅ (mezcla superpuesta). Android v2 ➜ (delay + fades + gain) — ver Roadmap.
-
+fadeInMs:  600,
+  fadeOutMs: 600,
 ---
 
 ## Características
@@ -27,14 +28,16 @@
 * Android: **minSdk 21**, **compileSdk 34**, Java/Kotlin **17**.
 * iOS: **12.0+**, Swift 5.
 
----
+---fadeInMs:  600,
+  fadeOutMs: 600,
 
 ## Instalación (en tu app)
 
 En `pubspec.yaml` de tu app:
 
 ```yaml
-dependencies:
+dependencies:fadeInMs:  600,
+  fadeOutMs: 600,
   audio_mixdown:
     git:
       url: https://github.com/krown-one/audio_mixdown.git

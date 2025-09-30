@@ -1,3 +1,5 @@
+@file:androidx.media3.common.util.UnstableApi
+
 package one.krown.audio_mixdown
 
 import android.content.Context
@@ -67,8 +69,8 @@ class AudioMixdownHostApiImpl(private val context: Context) : AudioMixdownHostAp
       }
       bgSeqItems += EditedMediaItem.Builder(bgMedia).build()
 
-      val seqVoice = EditedMediaItemSequence(listOf(voiceItem))
-      val seqBg    = EditedMediaItemSequence(bgSeqItems)
+      val seqVoice = EditedMediaItemSequence.Builder(listOf(voiceItem)).build()
+      val seqBg    = EditedMediaItemSequence.Builder(bgSeqItems).build()
 
       val composition = Composition.Builder(listOf(seqVoice, seqBg)).build()
 
